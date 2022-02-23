@@ -424,8 +424,8 @@ int getMinInArea(matrix m) {
     }
     return min;
 }
-int getDistance(const int *a, int n) {
-    int result = 0;
+float getDistance(float *a, int n) {
+    float result = 0;
     for (int i = 0; i < n; i++) {
         result += a[i] * a[i];
     }
@@ -435,6 +435,32 @@ int getDistance(const int *a, int n) {
 void sortByDistances(matrix m) {
     insertionSortRowsMatrixByRowCriteria(m, getDistance);
 }
+
+
+int Sum(int *a, int n) {
+    int Sum = 0;
+    for (int i = 0; i < n; i++) {
+        Sum += a[i];
+    }
+    return Sum;
+}
+
+
+int countEqClassesByRowsSum(matrix m) {
+    int count = 0;
+    for (int i = 0; i < m.nRows; i++) {
+        int flag = 0;
+        for (int j = i + 1; j < m.nRows; j++) {
+            if (Sum(m.values[i], m.nCols) == Sum(m.values[j], m.nCols))
+                flag = 1;
+        }
+        if (flag == 1)
+            count++;
+    }
+    return count;
+}
+
+
 
 int main() {
 
