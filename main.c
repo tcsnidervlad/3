@@ -460,7 +460,15 @@ int countEqClassesByRowsSum(matrix m) {
     return count;
 }
 
-
+int getNSpecialElement(matrix m, int nRows, int nCols) {
+    int count = 0;
+    transposeSquareMatrix(m);
+    for (int i = 0; i < nRows; i++) {
+        if (Sum(m.values[i], nRows) - getMax(m.values[i], nRows) < getMax(m.values[i], nRows))
+            count++;
+    }
+    return count;
+}
 
 int main() {
 
