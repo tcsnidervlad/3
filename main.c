@@ -365,6 +365,14 @@ void transposeIfMatrixHasEqualSumOfRows(matrix m, int nRows, int nCols) {
         transposeSquareMatrix(m);
 }
 
+bool isMutuallyInverseMatrices(matrix m1, matrix m2) {
+    m1 = mulMatrices(m1, m2);
+    for (int i = 0; i < m1.nRows; i++) {
+        if (m1.values[i][i] != 1)
+            return 0;
+    }
+    return 1;
+}
 
 int main() {
 
