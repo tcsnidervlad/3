@@ -314,6 +314,30 @@ void sortRowsByMinElement(matrix m) {
 
 }
 
+void sortColsByMinElement(matrix m) {
+    insertionSortColsMatrixByColCriteria(m,getMin);
+}
+
+
+matrix mulMatrices(matrix m1, matrix m2) {
+    matrix m3 = getMemMatrix(m1.nRows, m2.nCols);
+    for (int i = 0; i < m1.nRows; i++) {
+        for (int j = 0; j < m2.nCols; j++) {
+            m3.values[i][j] = 0;
+            for (int k = 0; k < m2.nRows; k++) {
+                m3.values[i][j] += m1.values[i][k] * m2.values[k][j];
+            }
+        }
+    }
+    return (matrix) {m3.values, m1.nRows, m2.nCols};
+}
+
+
+void getSquareOfMatrixIfSymmetric(matrix *m) {
+    if (isSymmetricMatrix(*m) == 1)
+        *m = mulMatrices(*m, *m);
+}
+
 
 int main() {
 
