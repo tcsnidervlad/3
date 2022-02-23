@@ -546,6 +546,31 @@ void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix) {
     }
 }
 
+int norma(matrix m, int k)
+//вычисление нормы через abs
+{
+    int max = abs(m.values[0][0]);
+    for (int i = 0; i < k; i++) {
+        for (int j = 0; j < k; j++) {
+            if (max < abs(m.values[i][j]))
+                max = abs(m.values[i][j]);
+        }
+    }
+    return max;
+}
+
+void printMatrixWithNorm(matrix *ms, int nMatrix) {
+    matrix Min = ms[0];
+
+    for (int i = 1; i < nMatrix; i++) {
+        if (norma(Min, Min.nRows) > norma(ms[i], ms[i].nRows))
+            Min = ms[i];
+    }
+    for (int j = 0; j < nMatrix; j++) {
+        if (norma(Min, Min.nRows == norma(ms[j], ms[j].nRows)))
+            outputMatrix(ms[j]);
+    }
+}
 
 
 int main() {
