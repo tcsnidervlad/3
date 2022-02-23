@@ -424,7 +424,17 @@ int getMinInArea(matrix m) {
     }
     return min;
 }
+int getDistance(const int *a, int n) {
+    int result = 0;
+    for (int i = 0; i < n; i++) {
+        result += a[i] * a[i];
+    }
+    return sqrt(result);
+}
 
+void sortByDistances(matrix m) {
+    insertionSortRowsMatrixByRowCriteria(m, getDistance);
+}
 
 int main() {
 
