@@ -470,6 +470,19 @@ int getNSpecialElement(matrix m, int nRows, int nCols) {
     return count;
 }
 
+void swapPenultimateRow(matrix m, int n) {
+    position p = getMinValuePos(m);
+    int t;
+    for (int i = 0; i < n; i++) {
+        if (n - 2 == i) {
+            m.values[n - 2][i] = t;
+        } else {
+            t = m.values[n - 2][i];
+            m.values[n - 2][i] = m.values[i][p.colIndex];
+        }
+    }
+}
+
 int main() {
 
     return 0;
